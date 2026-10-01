@@ -59,7 +59,7 @@ def parse_args():
     parser.add_argument(
         "--epochs",
         type=int,
-        default=10,
+        default=100,
         help="Number of training epochs."
     )
 
@@ -73,7 +73,7 @@ def parse_args():
     parser.add_argument(
         "--resolution",
         type=int,
-        default=384,
+        default=624, # 432,
         help="Training image resolution."
     )
 
@@ -115,7 +115,8 @@ def main():
     # Do not use RFDETRNano here.
     # ------------------------------------------------------
     model = RFDETRSegNano(
-        resolution=args.resolution
+        resolution=args.resolution,
+        pretrain_weights="rf-detr-seg-nano.pt"
     )
 
     # ------------------------------------------------------

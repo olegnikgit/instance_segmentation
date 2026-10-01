@@ -96,7 +96,7 @@ def parse_args():
     parser.add_argument(
         "--resolution",
         type=int,
-        default=384,
+        required=True,
         help="RF-DETR inference resolution.",
     )
 
