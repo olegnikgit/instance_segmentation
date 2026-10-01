@@ -21,8 +21,8 @@ import pkg_resources
 
 def main():
 
-    # read the image located in the package: src/drone_detection/test/data/dog-2.jpeg:
-    test_file = pkg_resources.resource_filename("drone_detection", "test/data/dog-2.jpeg")
+    # read the image located in the package: src/instance_segmentation/test/data/dog-2.jpeg:
+    test_file = pkg_resources.resource_filename("instance_segmentation", "test/data/dog-2.jpeg")
 
     image = Image.open(test_file)
 

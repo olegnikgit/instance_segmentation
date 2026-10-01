@@ -12,6 +12,12 @@ Installation
 # For Linux:
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
+# make sure uv is added to your PATH after installation:
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+# reload your shell configuration:
+source ~/.bashrc
+
+
 # Install Python 3.12:
 uv python install 3.12
 
@@ -27,9 +33,9 @@ source .venv-deploy/bin/activate
 # install pytorch:
 uv pip install torch==2.7.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
 
-# install drone_detection:
-# clone drone_detection
-cd drone_detection
+# install instance_segmentation:
+# clone instance_segmentation
+cd instance_segmentation
 uv pip install -e .
 
 # install RF-DETR:
