@@ -42,7 +42,8 @@ import numpy as np
 import torch
 import supervision as sv
 
-from rfdetr import RFDETRSegNano
+# from rfdetr import RFDETRSegNano
+from rfdetr import RFDETRSegSmall
 
 
 # ==========================================================
@@ -850,7 +851,11 @@ def main():
         "Loading RF-DETR Seg-Nano..."
     )
 
-    model = RFDETRSegNano(
+    # model = RFDETRSegNano(
+    #     resolution=args.resolution,
+    #     pretrain_weights=args.pretrain_weights,
+    # )
+    model = RFDETRSegSmall(
         resolution=args.resolution,
         pretrain_weights=args.pretrain_weights,
     )

@@ -30,7 +30,8 @@ python rf_detr_instance_segmentation_train.py \
 """
 
 # ==========================================================
-from rfdetr import RFDETRSegNano
+# from rfdetr import RFDETRSegNano
+from rfdetr import RFDETRSegSmall
 
 import argparse
 import os
@@ -114,9 +115,14 @@ def main():
     #
     # Do not use RFDETRNano here.
     # ------------------------------------------------------
-    model = RFDETRSegNano(
+    # model = RFDETRSegNano(
+    #     resolution=args.resolution,
+    #     pretrain_weights="rf-detr-seg-nano.pt"
+    # )
+
+    model = RFDETRSegSmall(
         resolution=args.resolution,
-        pretrain_weights="rf-detr-seg-nano.pt"
+        pretrain_weights="rf-detr-seg-small.pt",
     )
 
     # ------------------------------------------------------
