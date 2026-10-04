@@ -247,6 +247,16 @@ Both can be enabled together:
 --save_masks --save_overlay
 ```
 
+## Example Experiment
+
+A complete example workflow is provided in [`run_beam_segmentation.sh`](src/instance_segmentation/script/rf_detr/run_beam_segmentation.sh). The script prepares the dataset, trains the RF-DETR Small instance-segmentation model, and runs inference on unannotated images using the best model checkpoint. Set `DB_PATH` at the beginning of the script to point to your dataset directory, then run:
+
+```console
+bash src/instance_segmentation/script/rf_detr/run_beam_segmentation.sh
+```
+
+The script provides a simple end-to-end example that can be adapted to a new dataset by changing the input and output paths.
+
 ---
 
 # Inference Output
