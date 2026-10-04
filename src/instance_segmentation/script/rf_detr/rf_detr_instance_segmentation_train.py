@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Train RF-DETR Nano for instance segmentation on a custom dataset.
+Train RF-DETR Small for instance segmentation on a custom dataset.
 
 Expected dataset structure:
 
@@ -40,7 +40,7 @@ import os
 # ==========================================================
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Train RF-DETR Nano for instance segmentation."
+        description="Train RF-DETR Small for instance segmentation."
     )
 
     parser.add_argument(
@@ -60,7 +60,7 @@ def parse_args():
     parser.add_argument(
         "--epochs",
         type=int,
-        default=100,
+        default=200,
         help="Number of training epochs."
     )
 
@@ -90,6 +90,13 @@ def parse_args():
         type=float,
         default=1e-4,
         help="Learning rate."
+    )
+
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=42,
+        help="Random seed for reproducible training."
     )
 
     return parser.parse_args()
@@ -150,6 +157,10 @@ def main():
         # Don't run test evaluation during this first
         # training experiment.
         run_test=False,
+        seed=args.seed,
+        skip_best_epochs=5,  # Skip saving best model for the first 5 epochs.
+        # early_stopping=True,  # Enable early stopping based on validation loss.
+        # early_stopping_patience=15,  # Stop training if validation loss doesn't improve for 15 epochs.
     )
 
 
