@@ -16,7 +16,7 @@ PYTHON="python"
 DATASET_ROOT="${HOME}/Documents/Databases/Beams_instances/rf_detr_5fold"
 CV_RESULTS_ROOT="${HOME}/Documents/experiments/Beams_instances/rf_detr/rf_detr_5fold"
 
-INFERENCE_SCRIPT="${SCRIPT_DIR}/inference.py"
+INFERENCE_SCRIPT="${SCRIPT_DIR}/inference_kfold.py"
 EVALUATION_SCRIPT="${SCRIPT_DIR}/evaluate_kfold.py"
 
 # ==========================================================
