@@ -308,3 +308,70 @@ inference.py
 ```
 
 The same inference script can be used on new, unannotated datasets after training.
+
+---
+
+# N-Fold Cross Validation
+
+The package also provides scripts for N-fold cross-validation of the RF-DETR instance-segmentation model.
+
+## Dataset Preparation
+
+Prepare the N-fold dataset using:
+
+```console
+python src/instance_segmentation/database/prepare_rfdetr_kfold_dataset.py \
+    --annotations /path/to/annotations.json \
+    --images_dir /path/to/images \
+    --output_dir /path/to/rf_detr_5fold \
+    --num_folds 5 \
+    --seed 42
+```
+
+The script creates `num_folds` independent dataset splits. For each fold, the images are divided into training and validation subsets such that every image is used for validation exactly once across all folds.
+
+The resulting structure is:
+
+```text
+/path/to/rf_detr_5fold/
+├── fold_01/
+│   ├── train/
+│   ├── valid/
+│   └── split_manifest.json
+├── fold_02/
+├── ...
+└── fold_05/
+```
+
+## Train All Folds
+
+Run training for all folds with:
+
+```console
+bash src/instance_segmentation/script/rf_detr/rf_detr_kfold_train.sh
+```
+
+The script trains one RF-DETR model for each fold and stores the corresponding checkpoints and training results separately. Internally, it uses:
+
+```text
+src/instance_segmentation/script/rf_detr/rf_detr_instance_segmentation_train.py
+```
+
+for the actual model training.
+
+## Evaluate All Folds
+
+Run inference and evaluation for all folds with:
+
+```console
+bash src/instance_segmentation/script/rf_detr/run_kfold_evaluation.sh
+```
+
+The script runs inference on each fold's validation images, saves the predictions, and calculates the cross-validation metrics. Internally, it uses:
+
+```text
+src/instance_segmentation/script/rf_detr/inference_kfold.py
+src/instance_segmentation/script/rf_detr/evaluate_kfold.py
+```
+
+The evaluation produces per-fold metrics together with aggregated cross-validation results, including the mean and standard deviation across folds.
