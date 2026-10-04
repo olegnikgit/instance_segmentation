@@ -153,7 +153,7 @@ This is a simple train/validation split and is **not yet k-fold cross-validation
 Run:
 
 ```console
-python prepare_rfdetr_dataset.py \
+python src/instance_segmentation/database/prepare_rfdetr_dataset.py \
     --annotations <DB_PATH>/annotated/annotations.json \
     --images_dir <DB_PATH>/annotated/frames \
     --output_dir <DB_PATH>/rf_detr_format \
