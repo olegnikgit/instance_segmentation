@@ -4,6 +4,10 @@ This package provides tools for **RF-DETR-based instance segmentation**, includi
 
 The current implementation uses **RF-DETR Small in instance segmentation mode**.
 
+## Example Result
+
+![Beam instance segmentation result](src/instance_segmentation/test/data/beam_instances.png)
+
 ---
 
 ## Installation
